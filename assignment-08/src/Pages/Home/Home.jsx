@@ -1,7 +1,23 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import banImg from "../../assets/hero.png";
+import axios from "axios";
+import Card from "../../Components/Card/Card";
+import { Link } from "react-router";
 
 const Home = () => {
+  const [homeData, setHomeData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get("/appsData.json");
+      const data = res.data;
+
+      if (Array.isArray(data)) {
+        setHomeData(data.slice(0, 8));
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div>
       {/* Hero text */}
@@ -62,9 +78,25 @@ const Home = () => {
       {/* Trendiing Apps section */}
       <div className="text-center">
         <h1 className="text-4xl font-bold">Trending Apps</h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 py-7">
           Explore All Trending Apps on the Market developed by us
         </p>
+      </div>
+
+      <div className="grid  grid-cols-2 lg:grid-cols-4 gap-5 pb-7">
+        {homeData.map((data) => (
+          <Card key={data.id} data={data} />
+        ))}
+      </div>
+
+      {/* show allbutton  */}
+      <div className="text-center pb-10">
+        <Link
+          to={"allApps"}
+          className="text-white font-semibold bg-purple-600 btn"
+        >
+          Show all
+        </Link>
       </div>
     </div>
   );
