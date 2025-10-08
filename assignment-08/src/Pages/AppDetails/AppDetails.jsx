@@ -7,6 +7,7 @@ import ratingImg from "../../assets/icon-ratings.png";
 import RatingChart from "../../Components/RatingChart/RatingChart";
 import AppNotFound from "../AppNotFound/AppNotFound";
 import ModernLoading from "../ModernLoading/ModernLoading";
+import { ToastContainer, toast } from "react-toastify";
 
 const AppDetails = () => {
   const [filteredData, setFilteredData] = useState(null);
@@ -47,6 +48,7 @@ const AppDetails = () => {
     if (filteredData?.id) {
       addDataToTheDb(String(filteredData.id));
       setButtonStatus(true);
+      toast.success("App installed successfully!");
     }
   };
 
@@ -129,6 +131,7 @@ const AppDetails = () => {
           {filteredData.ratings && <RatingChart filteredData={filteredData} />}
         </div>
       )}
+      <ToastContainer />;
     </div>
   );
 };

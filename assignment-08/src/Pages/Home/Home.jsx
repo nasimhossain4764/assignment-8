@@ -1,9 +1,11 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import banImg from "../../assets/hero.png";
 import axios from "axios";
 import Card from "../../Components/Card/Card";
 import { Link } from "react-router";
 import ModernLoading from "../ModernLoading/ModernLoading";
+import playStoreLogo from "../../assets/playStore.svg";
+import appleStoreLogo from "../../assets/appleStore.svg";
 
 const Home = () => {
   const [homeData, setHomeData] = useState([]);
@@ -37,8 +39,23 @@ const Home = () => {
               turn your ideas into digital experiences that truly make an
               impact.
             </p>
-            <button>Google Play</button>
-            <button>App Store</button>
+            <div className="flex text-center items-center justify-center gap-5 pt-7 pb-4">
+              <Link
+                className="btn bg-white border-gray-300"
+                to={"https://play.google.com/store/games?hl=en&pli=1"}
+                target="blank"
+              >
+                <img className="w-4" src={playStoreLogo} alt="" /> Google Play
+                Store
+              </Link>
+              <Link
+                className="btn bg-white border-gray-300"
+                to={"https://www.apple.com/store"}
+                target="blank"
+              >
+                <img className="w-5" src={appleStoreLogo} alt="" /> App Store
+              </Link>
+            </div>
           </div>
 
           {/* Hero Banner */}
