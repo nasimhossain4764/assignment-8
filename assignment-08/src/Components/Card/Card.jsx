@@ -5,7 +5,7 @@ import reviewdImg from "../../assets/icon-ratings.png";
 const Card = ({ data }) => {
   return (
     <Link
-      to={`allApps/${data.id}`}
+      to={`/allApps/${data.id}`}
       className="card bg-base-100 w-full shadow-sm"
     >
       <figure>
