@@ -3,6 +3,10 @@ import Root from "../Layouts/Root/Root";
 import Home from "../Pages/Home/Home";
 import AllApps from "../Pages/AllApps/AllApps";
 import AppDetails from "../Pages/AppDetails/AppDetails";
+import InstalledApps from "../Components/InstalledApps/InstalledApps";
+import ModernLoading from "../Pages/ModernLoading/ModernLoading";
+import FourOFourPage from "../Pages/FourOFourPage/FourOFourPage";
+import AppNotFound from "../Pages/AppNotFound/AppNotFound";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +27,14 @@ const router = createBrowserRouter([
           params.id;
         },
         element: <AppDetails></AppDetails>,
+      },
+      {
+        path: "installed",
+        element: <InstalledApps />,
+      },
+      {
+        path: "*",
+        element: <FourOFourPage />,
       },
     ],
   },
