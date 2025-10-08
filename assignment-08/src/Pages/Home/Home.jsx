@@ -11,9 +11,7 @@ const Home = () => {
       const res = await axios.get("/appsData.json");
       const data = res.data;
 
-      if (Array.isArray(data)) {
-        setHomeData(data.slice(0, 8));
-      }
+      setHomeData(data.slice(0, 8));
     };
     fetchData();
   }, []);
